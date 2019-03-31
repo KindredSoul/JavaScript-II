@@ -1,4 +1,5 @@
-// A local community center is holding a fund raising 5k fun run and has invited 50 small businesses to make a small donation on their behalf for some much needed updates to their facilities.  Each business has assigned a representative to attend the event along with a small donation.
+// A local community center is holding a fund raising 5k fun run and has invited 50 small businesses to make a small donation on their behalf for some
+//  much needed updates to their facilities.  Each business has assigned a representative to attend the event along with a small donation.
 
 // Scroll to the bottom of the list to use some advanced array methods to help the event director gather some information from the businesses.
 
@@ -56,28 +57,105 @@ const runners = [{"id":1,"first_name":"Charmain","last_name":"Seiler","email":"c
 // ==== Challenge 1: Use .forEach() ====
 // The event director needs both the first and last names of each runner for their running bibs.  Combine both the first and last names into a new array called fullName. 
 let fullName = [];
+
+function getNames(item, arr, key1, key2) {      
+    arr.forEach((arr) => {
+        item.push(`${arr[key2]}, ${arr[key1]}`);
+    })
+}
+getNames(fullName, runners, "first_name", "last_name");
 console.log(fullName);
 
 // ==== Challenge 2: Use .map() ====
 // The event director needs to have all the runner's first names converted to uppercase because the director BECAME DRUNK WITH POWER. Convert each first name into all caps and log the result
 let allCaps = [];
+
+runners.map(runners => allCaps.push(runners.first_name.toUpperCase()));
+
 console.log(allCaps); 
 
 // ==== Challenge 3: Use .filter() ====
 // The large shirts won't be available for the event due to an ordering issue.  Get a list of runners with large sized shirts so they can choose a different size. Return an array named largeShirts that contains information about the runners that have a shirt size of L and log the result
 let largeShirts = [];
+
+runners.filter((size) => {
+    if (size.shirt_size === "L")
+        largeShirts.push(size)
+});
+
 console.log(largeShirts);
 
 // ==== Challenge 4: Use .reduce() ====
 // The donations need to be tallied up and reported for tax purposes. Add up all the donations into a ticketPriceTotal array and log the result
 let ticketPriceTotal = [];
+
+// If I don't set the current value to 0, the output is wonky. Why is that? (i.e. something like [[object object]6743576189705917456187634795628530756])
+ticketPriceTotal.push(runners.reduce((acc, curr) => acc + curr.donation, 0))
+
 console.log(ticketPriceTotal);
 
 // ==== Challenge 5: Be Creative ====
 // Now that you have used .forEach(), .map(), .filter(), and .reduce().  I want you to think of potential problems you could solve given the data set and the 5k fun run theme.  Try to create and then solve 3 unique problems using one or many of the array methods listed above.
 
 // Problem 1
+//The egos of our more prominient runners need inflating! Sort the list so that the donations are in order from greatest to least with the names of the runners and log the result. 
+let egoInflation = [];
+
+const ego = (item, arr, key, name) => {
+    let nameX = name
+    let keyX = key
+    arr.map(arr => {
+        item.push({ [nameX]: arr[name], [keyX]: arr[key] });
+    })
+    item.sort((a, b) => b[key] - a[key]);
+    return item;
+}
+ego(egoInflation, runners, "donation", "first_name");
+
+console.log(egoInflation);
+
+// Question: How does sort work the way it does?
 
 // Problem 2
+// There was an error when taking in the donations and it turns out that each donation is actually X times the amount listed! Create a new list that accurately portrays the runners' donations and log it. (X is any number of your choosing)
+let actualDonations = [];
+
+const bigMoney = (item, arr, key, x) => {
+    arr.forEach((arr) => item.push(arr[key] * x));
+    item.sort((a, b) => b - a);
+    return item;
+}
+bigMoney(actualDonations ,runners, "donation", 100);
+
+console.log(actualDonations);
 
 // Problem 3
+// The event director has decided that the runners must now be grouped based on their ACTUAL donation amounts. Create a list that splits the runners into at least three groups. Log your results.
+groupee = []
+let highClass = []
+let middleClass = []
+let lowClass = []
+
+function group(arr, arrA, arrB, arrC) {
+    arr.filter((arr) => {
+        if (arr > 20000){
+            arrA.push(arr);
+        }
+        else if(arr <= 20000 && arr > 10000){
+            arrB.push(arr);
+        }
+        else if(arr <= 10000){
+            arrC.push(arr);
+        }
+    })
+    
+    return groupee.push(arrA, arrB, arrC);
+} 
+
+group(actualDonations, highClass, middleClass, lowClass);
+
+// console.log(highClass);
+// console.log(middleClass);
+// console.log(lowClass);
+
+console.log(groupee);
