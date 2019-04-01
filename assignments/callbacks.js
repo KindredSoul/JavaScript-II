@@ -58,9 +58,9 @@ multiplyNums(10, 34, (multiply) => console.log(multiply));
 function contains(item, list, cb) {
   // contains checks if an item is present inside of the given array/list.
   // Pass true to the callback if it is, otherwise pass false.
-  return cb(item === list[item]);
+  return cb(list.some((list) => item === list));
 }
-contains('Gum', items, (find) => console.log(find));
+contains('Gum', items, (check) => console.log(check));
 
 /* STRETCH PROBLEM */
 
