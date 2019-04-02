@@ -63,6 +63,7 @@ function getNames(item, arr, key1, key2) {
         item.push(`${arr[key2]}, ${arr[key1]}`);
     })
 }
+
 getNames(fullName, runners, "first_name", "last_name");
 console.log(fullName);
 
@@ -106,6 +107,7 @@ const ego = (item, arr, key, name) => {
     let keyX = key
     arr.map(arr => {
         item.push({ [nameX]: arr[name], [keyX]: arr[key] });
+        // I had help with this one. The only thing they did differently was add the X variables and put them in brackets. I don't understand why the brackets are necessary but I know the func doesn't work without them. What is the purpose of the brackets?
     })
     item.sort((a, b) => b[key] - a[key]);
     return item;
@@ -114,7 +116,7 @@ ego(egoInflation, runners, "donation", "first_name");
 
 console.log(egoInflation);
 
-// Question: How does sort work the way it does?
+// Question: How exactly does sort work the way it does?
 
 // Problem 2
 // There was an error when taking in the donations and it turns out that each donation is actually X times the amount listed! Create a new list that accurately portrays the runners' donations and log it. (X is any number of your choosing)

@@ -39,28 +39,4 @@ const counterFactory = () => {
   // Return an object that has two methods called `increment` and `decrement`.
   // `increment` should increment a counter variable in closure scope and return it.
   // `decrement` should decrement the counter variable and return it.
-  let count = 0;
-  function increment(input){
-    if (input === "plus" || "add" || "+"){
-      console.log(++count);
-    }
-  }
-  increment;
-
-  function decrement(input){
-    if (input === "minus" || "subtract" || "-")
-    console.log(--count);
-  }
-  decrement;
-};
-const newNumber = counterFactory();
-newNumber('+');
-newNumber('+');
-newNumber('subtract');
-newNumber('+');
-newNumber('-');
-newNumber('-');
-newNumber('+');
-newNumber('minus');
-newNumber('add');
-newNumber('plus');
+}
